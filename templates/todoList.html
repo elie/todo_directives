@@ -1,4 +1,2 @@
 <h1>See your todos!</h1>
-<div ng-repeat="t in list.todos">
-  <single-todo todo="t"></single-todo>
-</div>
+<single-todo ng-repeat="todo in list.todos" todo="todo"></single-todo>
