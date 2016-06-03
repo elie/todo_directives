@@ -1,8 +1,0 @@
-<li>
-  <span ng-click="$ctrl.toggleCompletion()" ng-class="$ctrl.todo.isCompleted ? 'completed' : ''" >{{$ctrl.todo.task}}</span>
-  <button class="btn btn-danger btn-xs" ng-click="$ctrl.removeTodo()">X</button>
-  <button class="btn btn-warning btn-xs" ng-click="$ctrl.showEditForm()">Edit</button>
-  <div ng-show="$ctrl.showForm">
-    <edit-todo-form on-edit="$ctrl.editTodo()" todo="$ctrl.todo"></edit-todo-form>
-  </div>
-</li>

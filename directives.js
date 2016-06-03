@@ -1,49 +1,29 @@
-// THE FUTURE!
-app.component("singleTodo", {
-    restrict: "E",
-    // always isolate scope
-    // scope: {},
-    // same as bind to controller
+app.directive("parent", function(){
+  return {
+    scope: {},
+    transclude: true,
+    controllerAs: "parentController",
+    controller: function(){
+      // $scope.parentController === this
+      this.parentMessage = "Hello from the parent"
+    },
+    templateUrl: "partials/parent.html"
+  }
+})
+
+// move to component
+  // directive becomes component
+  // annonymous function becomes an object
+  // controllerAs defaults to $ctrl
+  // bindToController becomes bindings
+
+app.component("child", {
     bindings: {
-      // one way data bind!
-      todo: "<"
+      data: "<"
     },
-    templateUrl: "templates/singleTodo.html",
-    // default to $ctrl
-    // controllerAs: "todoCtrl",
-    controller: TodoController
-})
-
-app.directive("editTodoForm", function(){
-  return {
-    restrict: "E",
-    scope: {},
-    bindToController: {
-      todo: "=",
-      onEdit: "&"
+    controller: function(){
+      this.childMessage = "Hello from the child"
     },
-    templateUrl: "templates/editTodoForm.html",
-    controllerAs: "edit",
-    controller: EditTodoController
-  }
+    templateUrl: "partials/child.html"
 })
 
-app.directive("todoList", function(){
-  return {
-    restrict: "E",
-    scope: {},
-    templateUrl: "templates/todoList.html",
-    controllerAs: "list",
-    controller: TodoListController
-  }
-})
-
-app.directive("newTodoForm", function(){
-  return {
-    restrict: "E",
-    scope: {},
-    templateUrl: "templates/newTodoForm.html",
-    controllerAs: "add",
-    controller: NewTodoController
-  }
-})
